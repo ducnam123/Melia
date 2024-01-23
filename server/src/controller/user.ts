@@ -15,8 +15,9 @@ export const create = async (req: Request, res: Response) => {
     //   return res.status(404).json(errorResponse(404, "Not Found", errors));
     // }
 
-    const user = await createUser(req.body);
-    console.log(user);
+    const user = await createUser({
+      name: "alone",
+    });
 
     return res
       .status(201)
