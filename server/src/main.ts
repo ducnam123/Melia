@@ -3,7 +3,6 @@ import http from "http";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
-import favicon from "serve-favicon";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 
@@ -29,9 +28,6 @@ if (process.env.NODE_PUBLIC_ENV === "development") {
 app.use(cors());
 
 app.use(cookieParser());
-
-const publicPath = path.join(__dirname, "../public");
-app.use(favicon(path.join(publicPath, "favicon.ico")));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
