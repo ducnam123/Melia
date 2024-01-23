@@ -40,7 +40,7 @@ server.listen(process.env.NODE_PUBLIC_PORT || 8080, () => {
   winstonLogger.info(`Máy chủ đang chạy ${process.env.NODE_PUBLIC_ENV}!!!`);
 });
 
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
   try {
     res
       .status(200)
