@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
-import { errorResponse, successResponse } from "../config/response";
+import { errorResponse, successResponse } from "../configs/response";
 
-export const create = async (req: Request, res: Response) => {
+export const create = (req: Request, res: Response) => {
   try {
     const user = {};
 
     return res
       .status(201)
       .json(
-        successResponse(201, "Created", "Thêm người dùng thành công!", user)
+        successResponse(201, "Created", "Thêm mới người dùng thành công", user)
       );
   } catch (error) {
     return res

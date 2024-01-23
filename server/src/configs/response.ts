@@ -1,10 +1,10 @@
-import { currentDateTime } from "../lib/date";
+import { currentDateTime } from "../libs/date";
 
 const successResponse = (
   resultCode: number,
   title: string,
   message: string,
-  data?: any
+  data: any
 ) => ({
   result_code: resultCode,
   time: currentDateTime(),

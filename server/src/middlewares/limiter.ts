@@ -5,8 +5,8 @@ import rateLimit from "express-rate-limit";
 import { getStream } from "file-stream-rotator";
 
 import { winstonLogger } from "./logger";
-import { currentDateTime } from "../lib/date";
-import { errorResponse } from "../config/response";
+import { currentDateTime } from "../libs/date";
+import { errorResponse } from "../configs/response";
 
 export const limiter = rateLimit({
   windowMs: 10 * 60 * 1000,
