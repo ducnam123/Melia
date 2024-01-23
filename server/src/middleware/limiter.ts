@@ -54,7 +54,7 @@ export const limiter = rateLimit({
         )
       );
   },
-  validate: { xForwardedForHeader: true },
+  validate: { xForwardedForHeader: false },
   standardHeaders: true,
   legacyHeaders: false,
 });
