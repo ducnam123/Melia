@@ -68,7 +68,7 @@ export async function POST(req: Request) {
       banned: payload.data.banned,
     };
 
-    await fetch(`${process.env.BACKEND_API_URL}/api/users`, {
+    await fetch(`https://api-melias.vercel.app/api/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
