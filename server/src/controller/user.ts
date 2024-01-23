@@ -5,17 +5,18 @@ import { errorResponse, successResponse } from "../config/response";
 
 export const create = async (req: Request, res: Response) => {
   try {
-    const { error } = userValidate.validate(req.body, {
-      abortEarly: false,
-    });
+    // const { error } = userValidate.validate(req.body, {
+    //   abortEarly: false,
+    // });
 
-    if (error) {
-      const errors = error.details.map((err) => err.message);
+    // if (error) {
+    //   const errors = error.details.map((err) => err.message);
 
-      return res.status(404).json(errorResponse(404, "Not Found", errors));
-    }
+    //   return res.status(404).json(errorResponse(404, "Not Found", errors));
+    // }
 
     const user = await createUser(req.body);
+    console.log(user);
 
     return res
       .status(201)
