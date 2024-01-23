@@ -94,7 +94,7 @@ export async function POST(req: Request) {
       banned: payload.data.banned,
     };
 
-    await fetch(`${process.env.BACKEND_API_URL}/api/users/${payload.data.id}`, {
+    await fetch(`https://api-melias.vercel.app/api/users/${payload.data.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -104,7 +104,7 @@ export async function POST(req: Request) {
   }
 
   if (eventType === "user.deleted") {
-    await fetch(`${process.env.BACKEND_API_URL}/api/users/${payload.data.id}`, {
+    await fetch(`https://api-melias.vercel.app/api/users/${payload.data.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
