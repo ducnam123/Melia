@@ -51,23 +51,23 @@ export async function POST(req: Request) {
   // Get the ID and type
   const eventType = evt.type;
 
-  const user = {
-    _id: payload.data.id,
-    username: payload.data.username,
-    first_name: payload.data.first_name,
-    last_name: payload.data.last_name,
-    image_url: payload.data.image_url,
-    primary_email_address_id: payload.data.primary_email_address_id,
-    email_addresses: payload.data.email_addresses.map(
-      (item: { id: string; email_address: string }) => ({
-        _id: item.id,
-        email_address: item.email_address,
-      })
-    ),
-    banned: payload.data.banned,
-  };
-
   if (eventType === "user.created") {
+    const user = {
+      _id: payload.data.id,
+      username: payload.data.username,
+      first_name: payload.data.first_name,
+      last_name: payload.data.last_name,
+      image_url: payload.data.image_url,
+      primary_email_address_id: payload.data.primary_email_address_id,
+      email_addresses: payload.data.email_addresses.map(
+        (item: { id: string; email_address: string }) => ({
+          _id: item.id,
+          email_address: item.email_address,
+        })
+      ),
+      banned: payload.data.banned,
+    };
+
     await fetch(`${process.env.BACKEND_API_URL}/api/users`, {
       method: "POST",
       headers: {
@@ -78,6 +78,22 @@ export async function POST(req: Request) {
   }
 
   if (eventType === "user.updated") {
+    const user = {
+      _id: payload.data.id,
+      username: payload.data.username,
+      first_name: payload.data.first_name,
+      last_name: payload.data.last_name,
+      image_url: payload.data.image_url,
+      primary_email_address_id: payload.data.primary_email_address_id,
+      email_addresses: payload.data.email_addresses.map(
+        (item: { id: string; email_address: string }) => ({
+          _id: item.id,
+          email_address: item.email_address,
+        })
+      ),
+      banned: payload.data.banned,
+    };
+
     await fetch(`${process.env.BACKEND_API_URL}/api/users/${payload.data.id}`, {
       method: "PATCH",
       headers: {

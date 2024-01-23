@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     "Khách sạn Melia Hà Nội. Khám phá bữa sáng tuyệt vời. ✔ Wi-Fi miễn phí ✔ Chỗ đậu xe miễn phí ✔ Gym ✔ Spa ✔ Liệu pháp | Ưu đãi Melia Rewards độc quyền",
 };
 
-const HomePage = () => {
+const HomePage = async () => {
   return <div>HomePage</div>;
 };
 
