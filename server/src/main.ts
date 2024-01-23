@@ -19,6 +19,7 @@ app.use(limiter);
 if (process.env.NODE_PUBLIC_ENV === "development") {
   app.use(morganLogger());
 }
+app.set("trust proxy", true);
 app.use(cors(corsOptions));
 app.use(cookieParser());
 
