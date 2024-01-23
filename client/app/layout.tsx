@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { viVN } from "@clerk/localizations";
 import { ClerkProvider } from "@clerk/nextjs";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "@/css/globals.css";
 
@@ -33,7 +34,9 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
             enableSystem
             disableTransitionOnChange
           >
-            <main>{children}</main>
+            <AntdRegistry>
+              <main>{children}</main>
+            </AntdRegistry>
           </ThemeProvider>
         </body>
       </html>
