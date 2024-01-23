@@ -53,12 +53,12 @@ export async function POST(req: Request) {
   const eventType = evt.type;
 
   if (eventType === "user.created") {
-    await fetch(`${process.env.BACKEND_API_URL}/api/users`, {
+    await fetch("https://api-melias.vercel.app/api/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username: username }),
+      body: JSON.stringify({ username: "hotboyson" }),
     });
   }
 
