@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
+import { UserModel } from "../models/users";
 import { errorResponse, successResponse } from "../configs/response";
 
-export const create = (req: Request, res: Response) => {
+export const create = async (req: Request, res: Response) => {
   try {
-    const user = {};
+    const user = await UserModel.create(req.body);
 
     return res
       .status(201)
