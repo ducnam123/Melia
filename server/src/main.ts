@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 
 import baseRouter from "./router";
 import connect from "./database/mongoose";
+import { limiter } from "./middleware/limiter";
 import { winstonLogger } from "./middleware/logger";
 import { errorHandler, notFoundRoute } from "./middleware/error";
 
@@ -14,6 +15,7 @@ dotenv.config();
 
 const app = express();
 
+app.use(limiter);
 app.use(cors());
 
 app.use(cookieParser());
