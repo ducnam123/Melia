@@ -8,14 +8,22 @@ import cookieParser from "cookie-parser";
 import baseRouter from "./router";
 import connect from "./database/mongoose";
 import { limiter } from "./middleware/limiter";
-import { winstonLogger } from "./middleware/logger";
 import { errorHandler, notFoundRoute } from "./middleware/error";
+import { morganLogger, winstonLogger } from "./middleware/logger";
+import { errorResponse, successResponse } from "./config/response";
 
 dotenv.config();
 
 const app = express();
 
 app.use(limiter);
+
+connect();
+
+if (process.env.NODE_PUBLIC_ENV === "development") {
+  app.use(morganLogger());
+}
+
 app.use(cors());
 
 app.use(cookieParser());
@@ -32,8 +40,23 @@ server.listen(process.env.NODE_PUBLIC_PORT || 8080, () => {
   winstonLogger.info(`Máy chủ đang chạy ${process.env.NODE_PUBLIC_ENV}!!!`);
 });
 
-connect();
+app.get("/", (req, res) => {
+  try {
+    res
+      .status(200)
+      .json(
+        successResponse(
+          200,
+          "Success",
+          "Chào mừng bạn đến với Hệ thống đặt phòng khách sạn ~ Melia"
+        )
+      );
+  } catch (error) {
+    res.status(500).json(errorResponse(500, "Internal Server Error", error));
+  }
+});
 
 app.use("/api", baseRouter());
+
 app.use(notFoundRoute);
 app.use(errorHandler);
